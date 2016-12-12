@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Rent Bike</title>
+</head>
+
+<style type="text/css">
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
+
+<body>
+	<h1 align="center">租车界面</h1>
+	<hr style="height:2px;border:none;border-top:10px groove skyblue;width: 50%;" >
+	<p align="center"> 租车按时计费，不满1小时按一小时算，超过24小时加100</p>
+	<h2 align="center">可租用车辆列表</h2>
+	<table class="gridtable" align="center">
+		<tr>
+			<th>BikeType</th>
+			<th>BikeUnitPrice</th>
+		</tr>
+		{% for bike in List_Bike %}
+		<tr>
+			<td>{{bike.BikeType}}</td>
+			<td>{{bike.BikeUnitPrice}}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<div align="center">
+	<p>输入需要租车的BikeType：</p>
+	<form  method="post" >
+		{{Form.as_p}}
+		<input type="submit" value="租车" />
+	</form>
+	</div>
+</body>
+</html>

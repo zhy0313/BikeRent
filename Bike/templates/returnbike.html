@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<style type="text/css">
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
+
+
+<body>
+	<h1 align="center">还车界面</h1>
+	<hr style="height:2px;border:none;border-top:10px groove skyblue;width: 50%;" >
+	<h2 align="center">可还车订单</h2>
+	<<table class="gridtable" align="center">
+		<tr>
+			<th>PersonName</th>
+			<th>BikeType</th>
+			<th>OrderStartTime</th>
+			<th>OrderEndTime</th>
+			<th>OrderAccountPayable</th>
+		</tr>
+		<tr>
+			<td>{{RetrunOrder.OrderPersonID.PersonName}}</td>
+			<td>{{RetrunOrder.OrderBikeID.BikeType}}</td>
+			<td>{{StartTime}}</td>
+			<td>{{RetrunOrder.OrderEndTime}}</td>
+			<td>{{RetrunOrder.OrderAccountPayable}}</td>
+		</tr>
+	</table>
+	
+	<div align="center">
+	<p>输入需要还车的BikeType：</p>
+	<form  method="post" >
+		{{Form.as_p}}
+		<input type="submit" value="还车" />
+	</form>
+	</div>
+</body>
+</html>

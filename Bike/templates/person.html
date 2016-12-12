@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Person</title>
+</head>
+<style type="text/css">
+table.gridtable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+
+}
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+</style>
+
+<body>
+	<h1 align="center">个人中心</h1>
+	<div>
+	<hr style="height:2px;border:none;border-top:10px groove skyblue;width: 50%;" >
+	
+	<h2 align="center">用户信息</h2>
+	<div><p align="center">用户名称：{{Person.PersonName}}</p></div>
+	<div><p align="center">用户性别：{{Person.PersonGender}}</p></div>
+	<div><p align="center">用户电话：{{Person.PersonPhone}}</p></div>
+	<div><p align="center">用户租车状态:
+		{% if Person.IsAdmin == 1 %}
+			正在使用中
+		{% else %}
+			未使用
+		{% endif %}
+		</p>
+	</div>
+	<div><p align="center">用户当前应付金额：{{Person.AccountPayable}}</p></div>
+	</div>
+	<hr style="height:10px;border:none;border-top:10px groove skyblue;width: 50%;" >
+	<div align="center">
+	<h2 align="center">用户操作</h2>
+		<table>
+			<tr>
+				<td><a href="/Bike/rentbike/">Rent Bike</a></td>
+				<td></td>
+				<td><a href="/Bike/returnbike">Return Bike</a></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><p align="center"><a href="/Bike/signout/">SignOut</a></p></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<hr style="height:10px;border:none;border-top:10px groove skyblue;width: 50%;" >
+	<h2 align="center">用户历史订单</h2>
+	<table class="gridtable" align="center">
+		<tr>
+			<th>序号</th>
+			<th>PersonName</th>
+			<th>BikeType</th>
+			<th>OrderStartTime</th>
+			<th>OrderEndTime</th>
+			<th>OrderAccountPayable</th>
+		</tr>
+		{% for order in list_order_temp %}
+		<tr>
+			<td>{{forloop.counter}}</td>
+			<td>{{order.Name}}</td>
+			<td>{{order.Bike}}</td>
+			<td>{{order.StartTime}}</td>
+			<td>{{order.EndTime}}</td>
+			<td>{{order.Payable}}</td>
+		</tr>
+		{% endfor %}
+</body>
+</html>
+
+
+    
